@@ -36,22 +36,22 @@ print(data.prices_currency.unique())  #check how much different currencies we ha
 print(data.prices_currency.value_counts()) #check which currency is the most popular
 x = data.prices_currency.value_counts()
 y = data.prices_currency.unique()
-#currency_bar_chart(x,y) #function calling
+currency_bar_chart(x,y) #function calling
 
 print(data.prices_currency.value_counts(normalize = True)) #percentage of currencies
 #96% of currencies are USD, so we will use only USD to perform next steps
 df_usd = data[data.prices_currency == 'USD'].copy() #filter by currency = USD
 df_usd['prices_amountMin'] = df_usd['prices_amountMin'].astype(np.float) #change type to float
-#press_ent = input("Press enter to see histogram which presents prices in USD. ")
-#plt.hist(df_usd.prices_amountMin) #histogram of prices
-#plt.show()
+press_ent = input("Press enter to see histogram which presents prices in USD. ")
+plt.hist(df_usd.prices_amountMin) #histogram of prices
+plt.show()
 
 filter = np.percentile(df_usd.prices_amountMin, 99) #99% of prices are less or equal to this value
 df_usd_filter = df_usd[df_usd.prices_amountMin < filter]
 print(df_usd_filter)
-#press_ent = input("Press enter to see histogram which presents 99 percentile of prices, divided to 100 bins. ")
-#plt.hist(df_usd_filter.prices_amountMin, bins=100)
-#plt.show() #this is result of day 3
+press_ent = input("Press enter to see histogram which presents 99 percentile of prices, divided to 100 bins. ")
+plt.hist(df_usd_filter.prices_amountMin, bins=100)
+plt.show() #this is result of day 3
 
 ########## DAY 4 ##########
 from sklearn.tree import DecisionTreeRegressor
