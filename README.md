@@ -1,2 +1,2 @@
 # Projekt transformacja
-Matrix
+Zadania wykonane w Pythonie przy wykorzystaniu Pycharm.
